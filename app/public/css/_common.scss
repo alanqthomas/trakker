@@ -1,0 +1,23 @@
+a, a *{
+	cursor: pointer;
+
+	&:hover{
+		text-decoration: underline;
+	}
+
+}
+
+.clear-spacing {
+	margin: 0px;
+	padding: 0px;
+}
+
+.text-center {
+		text-align: center;
+}
+
+.overflow-ellipsis{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "trakker",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Alan Thomas <alan.q.thomas@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-resource": "^1.5.8",
+    "normalize-css": "normalize.css#^4.2.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "materialize": "^0.97.7",
+    "angular-materialize": "^0.2.1"
+  },
+  "devDependencies": {
+    "sass-material-design-colors": "^1.0.3"
+  }
+}

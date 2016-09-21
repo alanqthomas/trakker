@@ -1,0 +1,69 @@
+<md-card class="item-card-scope">
+	<div layout="row">
+		<a flex="30" class="img-link" ng-show="item.imdb != null" href="{{item.imdb.imdburl}}">
+			<img ng-src="{{item.imdb.poster}}">
+		</a>
+
+		<div flex="65" layout="column" class="content-column">
+				<md-card-title-text flex="80">
+					<span class="md-title">{{item.name}}</span>
+					<div>
+						<span class="md-caption">Season</span>
+						<span>{{item.progress.season}}</span>
+						<span class="md-caption">Episode</span>
+						<span>{{item.progress.episode}}</span>
+					</div>
+				</md-card-title-text>
+
+				<md-card-actions flex="20">
+					<div class="action-row">
+			      <md-button class="md-icon-button" ng-click="deleteItem(item._id)">
+			        <md-icon><i class="material-icons">delete</i></md-icon>
+			      </md-button>
+						<md-button class="md-icon-button" ng-click="showIMDBPrompt($event, item)">
+			        <md-icon><i class="material-icons">link</i></md-icon>
+			      </md-button>
+					</div>
+				</md-card-actions>
+		</div>
+
+		<div flex="5" class="status-bar"></div>
+	</div>
+</md-card>
+
+<!--
+	<div class="item-card row">
+		<div class="img-block col-xs-4">
+			<a ng-show="item.imdb != null" href="{{item.imdb.imdburl}}">
+				<img ng-src="{{item.imdb.poster}}" />
+			</a>
+		</div>
+
+		<div class="content-block clear-spacing col-xs-7">
+			<div class="row clear-spacing content-row">
+				<h2 class="overflow-ellipsis">
+					{{item.name}}
+				</h2>
+
+				<div ng-show="item.type == 'tv_series'">
+					<h5>season</h5>
+					<h3>{{item.progress.season}}</h3>
+					<h5>episode</h5>
+					<h3>{{item.progress.season}}</h3>
+				</div>
+
+				<h4><i class="fa fa-star"></i>{{item.imdb.rating}}</h4>
+
+			</div>
+
+			<div class="row clear-spacing options-row">
+				<a ng-click="deleteItem(item._id)">Delete <i class="fa fa-minus"></i></a>
+			</div>
+		</div>
+
+		<div class="status-block col-xs-1">
+			<div class="status"></div>
+		</div>
+
+	</div>
+-->

@@ -1,0 +1,57 @@
+<div class="home-scope" ng-controller="homeController">
+	<h1 class="md-display-3 text-center">Trakker</h1>
+
+	<form name="addItemForm" ng-submit="addItem()">
+		<div layout="row" layout-align="center start">
+			<md-input-container class="name-input">
+				<label>Name</label>
+				<input type="text" ng-model="newItem.name" md-no-asterisk required/>
+			</md-input-container>
+			<div>
+				<md-button class="md-raised md-primary" type="submit">Add</md-button>
+			</div>
+		</div>
+
+		<div layout="row" layout-align="center start">
+			<a class="option-toggle md-caption" ng-click="moreOptions = !moreOptions">more&#9660;</a>
+		</div>
+
+		<div ng-show="moreOptions">
+			<div layout-xs="column" layout-align-xs="start center" layout-gt-xs="row" layout-align-gt-xs="center start">
+					<md-input-container class="type-input" flex-gt-xs="20" flex-xs="40">
+						<md-select ng-model="newItem.type" placeholder="Type">
+							<md-option ng-click="typeChanged($index)" ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
+						</md-select>
+					</md-input-container>
+
+					<md-input-container class="status-input" flex="20">
+						<md-select ng-model="newItem.status" placeholder="Status">
+							<md-option ng-repeat="status in statuses" ng-value="status.value">{{status.name}}</md-option>
+						</md-select>
+					</md-input-container>
+
+					<md-input-container flex="10">
+						<input type="text" ng-model="newItem.progress.season" placeholder="Season" />
+					</md-input-container>
+
+					<md-input-container flex="10">
+						<input type="text" ng-model="newItem.progress.episode" placeholder="Episode" />
+					</md-input-container>
+			</div>
+
+			<div layout="row" layout-align="center start">
+				<md-input-container>
+					<label>IMDB ID</label>
+					<input type="text" ng-model="newItem.imdb" />
+				</md-input-container>
+			</div>
+		</div>
+	</form>
+
+	{{newItem}}
+
+	<div layout="row">
+		<item-card flex-xs="100" flex-sm="50" flex="33" ng-repeat="item in items" id="{{item._id}}">
+		</item-card>
+	</div>
+</div>

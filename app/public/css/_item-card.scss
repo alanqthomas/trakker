@@ -1,0 +1,31 @@
+.item-card-scope {
+	md-card {
+		overflow: hidden;
+	}
+
+	img{
+		height: 100%;
+	}
+
+	.img-link{
+		max-height: 150px;
+	}
+
+	.status-bar{
+		background: blue;
+	}
+
+	.content-column{
+		padding: 15px;
+	}
+
+	.action-row md-icon{
+		display: none !important;
+	}
+
+	.action-row:hover md-icon{
+		display: block !important;
+	}
+
+
+}
