@@ -13,7 +13,10 @@
   },
   "author": "",
   "license": "GPL-3.0",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "should": "^11.1.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -29,6 +32,6 @@
     "imdb-api": "^2.0.0",
     "mongodb": "^2.2.8",
     "serve-favicon": "^2.3.0",
-		"bower": "^1.7.9"
+    "bower": "^1.7.9"
   }
 }

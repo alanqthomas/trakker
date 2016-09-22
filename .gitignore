@@ -2,3 +2,4 @@ node_modules/
 app/public/lib/
 app/public/dist/
 .sass-cache
+app/public/dist/styles.css
