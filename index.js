@@ -6,7 +6,7 @@ const express = require('express'),
  expressMongoDb = require('express-mongo-db'),
  favicon = require('serve-favicon')
 
-const port = 3000,
+const port = process.env.PORT || 3000,
 	routesPath = './app/routes/',
 	apiVersion = 1
 

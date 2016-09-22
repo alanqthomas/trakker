@@ -1,3 +1,4 @@
 node_modules/
 app/public/lib/
+app/public/dist/
 .sass-cache
