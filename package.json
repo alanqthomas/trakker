@@ -13,9 +13,7 @@
   },
   "author": "",
   "license": "GPL-3.0",
-  "devDependencies": {
-    "bower": "^1.7.9"
-  },
+  "devDependencies": {},
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -30,6 +28,7 @@
     "grunt-sass": "^1.2.1",
     "imdb-api": "^2.0.0",
     "mongodb": "^2.2.8",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+		"bower": "^1.7.9"
   }
 }
