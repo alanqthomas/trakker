@@ -1,14 +1,14 @@
 {
   "name": "trakker",
   "version": "1.0.0",
-	"engines": {
-		"node": "6.3.1",
-		"npm": "3.10.3"
-	},
+  "engines": {
+    "node": "6.3.1",
+    "npm": "3.10.3"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
-		"postinstall": "grunt production",
+    "postinstall": "grunt production",
     "start": "node index.js"
   },
   "author": "",
@@ -20,15 +20,16 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-mongo-db": "^2.0.3",
-    "imdb-api": "^2.0.0",
-    "mongodb": "^2.2.8",
-    "serve-favicon": "^2.3.0",
-		"grunt": "^1.0.1",
+    "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-express-server": "^0.5.3"
+    "grunt-express-server": "^0.5.3",
+    "grunt-sass": "^1.2.1",
+    "imdb-api": "^2.0.0",
+    "mongodb": "^2.2.8",
+    "serve-favicon": "^2.3.0"
   }
 }
