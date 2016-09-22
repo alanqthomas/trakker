@@ -7,19 +7,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "grunt production && node index.js"
+		"postinstall": "grunt production",
+    "start": "node index.js"
   },
   "author": "",
   "license": "GPL-3.0",
   "devDependencies": {
-    "bower": "^1.7.9",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-express-server": "^0.5.3"
+    "bower": "^1.7.9"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -27,6 +21,13 @@
     "express-mongo-db": "^2.0.3",
     "imdb-api": "^2.0.0",
     "mongodb": "^2.2.8",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+		"grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.3"
   }
 }
