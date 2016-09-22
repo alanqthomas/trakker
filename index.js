@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(__dirname + '/app/public'))
 
 // MongoDB connection sharing
-app.use(expressMongoDb('mongodb://localhost:27017/trakker'))
+app.use(expressMongoDb('mongodb://heroku_4zl85rkd:698dt04esv2i1f1o3n50ao677u@ds035816.mlab.com:35816/heroku_4zl85rkd'))
 
 // Mount routes
 app.use('/api/v' + apiVersion, item)
