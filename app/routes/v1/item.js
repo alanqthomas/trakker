@@ -22,7 +22,7 @@ router.post(`${route}`, (req, res) => {
 		assert.equal(err, null)
 		console.log("Inserted a document")
 		res.send(req.body)
-	});
+	})
 })
 
 router.delete(`${route}/:id`, (req, res) => {

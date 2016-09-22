@@ -24,7 +24,7 @@
 			{"name": "Playing", "value": "playing"},
 			{"name": "Finished", "value": "finished"}
 		]}
-	]);
+	])
 
 	app.constant('ITEM_STATUSES', {
 		"movie": [
@@ -42,10 +42,10 @@
 			{"name": "Playing", "value": "playing"},
 			{"name": "Finished", "value": "finished"}
 		]
-	});
+	})
 
 	app.constant('API', {
 		"VERSION_1": "api/v1/"
 	})
 
-})();
+})()

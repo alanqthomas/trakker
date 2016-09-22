@@ -5,7 +5,7 @@
 		return $resource(API.VERSION_1 + 'item/:id', null,
 		{
 			'update': { method: 'PUT' }
-		});
-	}]);
+		})
+	}])
 
-})();
+})()

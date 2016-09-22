@@ -6,6 +6,6 @@
 			restrict: 'E',
 			templateUrl: 'views/item-card.html'
 		}
-	});
+	})
 
-})();
+})()
