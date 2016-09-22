@@ -6,6 +6,11 @@ module.exports = function(grunt){
 				options: {
 					script: 'index.js'
 				}
+			},
+			production: {
+				options: {
+					script: 'index.js'
+				}
 			}
 		},
 		sass: {
@@ -63,4 +68,5 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-jshint')
 
 	grunt.registerTask('default', ['express:dev', 'watch'])
+	grunt.registerTask('production', ['sass', 'jshint', 'concat'])
 }
