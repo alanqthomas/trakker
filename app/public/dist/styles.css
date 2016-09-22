@@ -17,17 +17,21 @@ a, a * {
 
 .item-card-scope md-card {
   overflow: hidden; }
+
 .item-card-scope img {
   height: 100%; }
+
 .item-card-scope .img-link {
   max-height: 150px; }
+
 .item-card-scope .status-bar {
   background: blue; }
+
 .item-card-scope .content-column {
   padding: 15px; }
+
 .item-card-scope .action-row md-icon {
   display: none !important; }
+
 .item-card-scope .action-row:hover md-icon {
   display: block !important; }
-
-/*# sourceMappingURL=styles.css.map */
