@@ -1,8 +1,8 @@
 (function(){
 
 	angular.module('trakker').controller('homeController',
-	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'Imdb', '$mdDialog',
-	function($scope, $http, Item, $location, $log, ITEM_TYPES, Imdb, $mdDialog){
+	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'STATUS_COLORS', 'Imdb', '$mdDialog',
+	function($scope, $http, Item, $location, $log, ITEM_TYPES, STATUS_COLORS, Imdb, $mdDialog){
 
 		function init(){
 			loadItems()
@@ -16,17 +16,21 @@
 			$scope.items = Item.query(function(res){
 				$log.info("Loaded items", res)
 				$scope.items.forEach(function(e, i, a){
-					if('imdb' in e){
-						Imdb.getById(e.imdb).then(function(data){
-							$log.debug('IMDB api data: ', data)
-							if(data)
-								e.imdb = data
-						})
-					}
+					loadImdb(e);
 				})
 			}, function(err) {
 				$log.error("Error loading items", err)
 			})
+		}
+
+		function loadImdb(item){
+			if('imdb' in item){
+				Imdb.getById(item.imdb).then(function(data){
+					$log.debug('IMDB api data: ', data)
+					if(data)
+						item.imdb = data
+				})
+			}
 		}
 
 		$scope.addItem = function(){
@@ -55,7 +59,7 @@
 			$log.debug(item)
 			Item.update({id: item._id}, item, function(res){
 				$log.debug(res)
-				loadItems()
+				loadImdb(item)
 			}, function(res){
 				$log.error(res)
 			})
@@ -83,6 +87,34 @@
 			}, function(){
 				$log.debug('Cancelled')
 			})
+		}
+
+		$scope.incrementEpisodeCount = function(item){
+			item.progress.episode = String(Number(item.progress.episode) + 1);
+			$scope.updateItem(item);
+		}
+
+		$scope.setStatusColor = function(item){
+			var color = STATUS_COLORS[item.status];
+
+			switch(color){
+				case "green":
+					colorStyle = "#8BC34A"
+					break
+				case "red":
+					colorStyle = "#F44336"
+					break
+				case "blue":
+					colorStyle = "#2196F3"
+					break
+				case "dark-green":
+					colorStyle = "#009688"
+					break
+				default:
+					colorStyle = color
+			}
+
+			return { "background-color":  colorStyle}
 		}
 
 		init()

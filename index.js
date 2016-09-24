@@ -4,7 +4,8 @@ const express = require('express'),
  assert = require('assert'),
  MongoClient = require('mongodb').MongoClient,
  expressMongoDb = require('express-mongo-db'),
- favicon = require('serve-favicon')
+ favicon = require('serve-favicon'),
+ compression = require('compression')
 
 const port = process.env.PORT || 3000,
 	routesPath = './app/routes/',
@@ -20,6 +21,9 @@ app.use(favicon(__dirname + '/app/public/favicon.ico'))
 // Body parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+
+// Compression
+app.use(compression())
 
 // Static files
 app.use(express.static(__dirname + '/app/public'))

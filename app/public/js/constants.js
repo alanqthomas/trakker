@@ -26,6 +26,17 @@
 		]}
 	])
 
+	app.constant('STATUS_COLORS', {
+		"not_watched": "red",
+		"watched": "green",
+		"not_started": "red",
+		"behind": "blue",
+		"up_to_date": "dark-green",
+		"finished": "green",
+		"not_played": "red",
+		"playing": "blue"
+	})
+
 	app.constant('ITEM_STATUSES', {
 		"movie": [
 			{"name": "Not Watched", "value": "not_watched"},

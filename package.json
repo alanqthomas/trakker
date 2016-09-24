@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "compression": "^1.6.2",
     "express": "^4.14.0",
     "express-mongo-db": "^2.0.3",
     "grunt": "^1.0.1",
@@ -31,7 +33,6 @@
     "grunt-sass": "^1.2.1",
     "imdb-api": "^2.0.0",
     "mongodb": "^2.2.8",
-    "serve-favicon": "^2.3.0",
-    "bower": "^1.7.9"
+    "serve-favicon": "^2.3.0"
   }
 }
