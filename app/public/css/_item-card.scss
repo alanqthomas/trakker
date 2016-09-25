@@ -3,12 +3,28 @@
 		overflow: hidden;
 	}
 
-	img{
-		height: 100%;
+	mc-card-title-text {
+		overflow: hidden !important;
+		span {
+			text-overflow: ellipsis !important;
+			white-space: nowrap !important;
+			overflow: hidden !important;
+			display: block !important;
+		}
 	}
 
-	.img-link{
-		max-height: 150px;
+	.md-button {
+		margin: 0px !important;
+	}
+
+	img{
+		height: 150px;
+		width: auto;
+		object-fit: cover;
+	}
+
+	.img-wrapper{
+		height: 150px;
 	}
 
 	.content-column{

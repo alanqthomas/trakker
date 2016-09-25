@@ -6,6 +6,7 @@
 		'ngAria',
 		'ngMessages',
 		'ngMaterial',
-		'angularSlideables'
+		'angularSlideables',
+		'ngFitText'
 	])
 })();

@@ -1,12 +1,14 @@
 <md-card class="item-card-scope">
 	<div layout="row">
-		<a flex="30" class="img-link" ng-show="item.imdb != null" href="{{item.imdb.imdburl}}">
-			<img ng-src="{{item.imdb.poster}}">
-		</a>
+		<div class="img-wrapper" flex="30">
+			<a ng-show="item.imdb != null" href="{{item.imdb.imdburl}}">
+				<img ng-src="{{item.imdb.poster}}">
+			</a>
+		</div>
 
 		<div flex="65" layout="column" class="content-column">
 				<md-card-title-text flex="80">
-					<span class="md-title">{{item.name}}</span>
+					<span class="md-title" data-fittext data-fittext-max="inherit">{{item.name}}</span>
 					<div ng-show="item.progress">
 						<span class="md-caption">Season</span>
 						<span>{{item.progress.season}}</span>
@@ -23,7 +25,7 @@
 						<md-button class="md-icon-button" ng-click="showIMDBPrompt($event, item)">
 			        <md-icon><i class="material-icons">link</i></md-icon>
 			      </md-button>
-						<md-button class="md-icon-button" ng-click="incrementEpisodeCount(item)">
+						<md-button ng-show="item.progress" class="md-icon-button" ng-click="incrementEpisodeCount(item)">
 			        <md-icon><i class="material-icons">add_circle</i></md-icon>
 			      </md-button>
 					</div>
