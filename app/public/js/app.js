@@ -5,6 +5,7 @@
 		'ngAnimate',
 		'ngAria',
 		'ngMessages',
-		'ngMaterial'
+		'ngMaterial',
+		'angularSlideables'
 	])
 })();

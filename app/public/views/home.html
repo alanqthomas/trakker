@@ -13,10 +13,10 @@
 		</div>
 
 		<div layout="row" layout-align="center start">
-			<a class="option-toggle md-caption" ng-click="moreOptions = !moreOptions">more&#9660;</a>
+			<a class="option-toggle md-caption" slide-toggle="#more-options">more&#9660;</a>
 		</div>
 
-		<div ng-show="moreOptions">
+		<div id="more-options" class="slideable" easing="cubic-bezier(0.19, 1, 0.22, 1)" duration="1s">
 			<div layout-xs="column" layout-align-xs="start center" layout-gt-xs="row" layout-align-gt-xs="center start">
 					<md-input-container class="type-input" flex-gt-xs="20" flex-xs="40">
 						<md-select ng-model="newItem.type" placeholder="Type">

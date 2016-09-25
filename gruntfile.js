@@ -25,7 +25,8 @@ module.exports = function(grunt){
 		},
 		concat: {
 			dist:{
-				src: ['app/public/js/**/*.js'],
+				src: ['app/public/js/**/*.js',
+							'!app/public/js/**/*.spec.js'],
 				dest: 'app/public/dist/scripts.js'
 			}
 		},
