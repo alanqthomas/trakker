@@ -3,15 +3,37 @@
 		overflow: hidden;
 	}
 
-	mc-card-title-text {
-		overflow: hidden !important;
-		span {
-			text-overflow: ellipsis !important;
-			white-space: nowrap !important;
-			overflow: hidden !important;
-			display: block !important;
-		}
-	}
+	.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 75px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 5px 0;
+		opacity: 0;
+		transition: all linear 0.15s;
+
+		font-size: 10px;
+
+    /* Position the tooltip */
+    position: absolute;
+		top: -30px;
+		right: 0px;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+		opacity: 0.5;
+
+}
 
 	.md-button {
 		margin: 0px !important;

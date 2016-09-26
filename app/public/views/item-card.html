@@ -32,6 +32,9 @@
 				</md-card-actions>
 		</div>
 
-		<div flex="5" ng-style="setStatusColor(item)"></div>
+		<div flex="5" class="tooltip" ng-style="setStatusColor(item)">
+			<span class="tooltiptext">{{item.status}}</span>
+		</div>
+
 	</div>
 </md-card>
