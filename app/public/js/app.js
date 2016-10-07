@@ -7,6 +7,7 @@
 		'ngMessages',
 		'ngMaterial',
 		'angularSlideables',
-		'ngFitText'
+		'ngFitText',
+		'ngFileUpload'
 	])
 })();

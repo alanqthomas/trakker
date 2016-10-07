@@ -1,3 +1,5 @@
+$card-height: 150px;
+
 .item-card-scope {
 	md-card {
 		overflow: hidden;
@@ -6,41 +8,52 @@
 	.tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
-}
+		transition: all linear 0.15s;
 
-.tooltip .tooltiptext {
+	}
+
+	.tooltip .tooltip-text {
     visibility: hidden;
     width: 75px;
-    background-color: black;
+    background-color: #000;
     color: #fff;
     text-align: center;
     border-radius: 2px;
     padding: 5px 0;
 		opacity: 0;
 		transition: all linear 0.15s;
-
+		transition-delay: .25s;
 		font-size: 10px;
+		cursor: pointer;
 
     /* Position the tooltip */
     position: absolute;
-		top: -30px;
+		bottom: $card-height + 5;
 		right: 0px;
     z-index: 1;
-}
 
-.tooltip:hover .tooltiptext {
+		.tooltip-menu-item {
+			padding: 5px 0px 5px 0px;
+			margin:0px;
+		}
+
+		.tooltip-menu-item:hover {
+			background-color: #888;
+		}
+	}
+
+	.tooltip:hover .tooltip-text {
     visibility: visible;
 		opacity: 0.5;
-
-}
+		transition: all linear 0.15s;
+	}
 
 	.md-button {
 		margin: 0px !important;
 	}
 
 	img{
-		height: 150px;
+		height: $card-height;
 		width: auto;
 		object-fit: cover;
 	}
@@ -60,6 +73,4 @@
 	.action-row:hover md-icon{
 		display: block !important;
 	}
-
-
 }

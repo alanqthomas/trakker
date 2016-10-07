@@ -32,8 +32,14 @@
 				</md-card-actions>
 		</div>
 
-		<div flex="5" class="tooltip" ng-style="setStatusColor(item)">
-			<span class="tooltiptext">{{item.status}}</span>
+		<div flex="5" class="tooltip" ng-style="setStatusColor(item)" >
+			<div class="tooltip-text">
+				<div ng-repeat="(type, statuses) in ITEM_STATUSES">
+					<div ng-if="type === item.type" ng-repeat="status in statuses" class="tooltip-menu-item" >
+						{{status.name}}
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>

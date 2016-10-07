@@ -1,14 +1,15 @@
 (function(){
 
 	angular.module('trakker').controller('homeController',
-	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'STATUS_COLORS', 'Imdb', '$mdDialog',
-	function($scope, $http, Item, $location, $log, ITEM_TYPES, STATUS_COLORS, Imdb, $mdDialog){
+	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'STATUS_COLORS', 'ITEM_STATUSES', 'Imdb', '$mdDialog',
+	function($scope, $http, Item, $location, $log, ITEM_TYPES, STATUS_COLORS, ITEM_STATUSES, Imdb, $mdDialog){
 
 		function init(){
 			loadItems()
 			$scope.addItemForm = {}
 			// Constants for drop downs
 			$scope.ITEM_TYPES = ITEM_TYPES
+			$scope.ITEM_STATUSES = ITEM_STATUSES
 			$scope.statuses = []
 		}
 
@@ -16,7 +17,7 @@
 			$scope.items = Item.query(function(res){
 				$log.info("Loaded items", res)
 				$scope.items.forEach(function(e, i, a){
-					loadImdb(e);
+					loadImdb(e)
 				})
 			}, function(err) {
 				$log.error("Error loading items", err)
@@ -90,8 +91,8 @@
 		}
 
 		$scope.incrementEpisodeCount = function(item){
-			item.progress.episode = String(Number(item.progress.episode) + 1);
-			$scope.updateItem(item);
+			item.progress.episode = String(Number(item.progress.episode) + 1)
+			$scope.updateItem(item)
 		}
 
 		$scope.setStatusColor = function(item){
@@ -115,6 +116,10 @@
 			}
 
 			return { "background-color":  colorStyle}
+		}
+
+		$scope.openMenu = function($mdOpenMenu, ev){
+			$mdOpenMenu(ev);
 		}
 
 		init()
