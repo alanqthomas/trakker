@@ -95,6 +95,12 @@
 			$scope.updateItem(item)
 		}
 
+		$scope.changeStatus = function(item, status){
+			console.log(item, status);
+			item.status = status;
+			$scope.updateItem(item);
+		}
+
 		$scope.setStatusColor = function(item){
 			var color = STATUS_COLORS[item.status];
 

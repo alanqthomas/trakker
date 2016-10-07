@@ -15,6 +15,7 @@
 						<span class="md-caption">Episode</span>
 						<span>{{item.progress.episode}}</span>
 					</div>
+					{{item.status}}
 				</md-card-title-text>
 
 				<md-card-actions flex="20">
@@ -35,7 +36,7 @@
 		<div flex="5" class="tooltip" ng-style="setStatusColor(item)" >
 			<div class="tooltip-text">
 				<div ng-repeat="(type, statuses) in ITEM_STATUSES">
-					<div ng-if="type === item.type" ng-repeat="status in statuses" class="tooltip-menu-item" >
+					<div ng-if="type === item.type" ng-repeat="status in statuses" ng-click="changeStatus(item, status.value)" class="tooltip-menu-item" >
 						{{status.name}}
 					</div>
 				</div>
