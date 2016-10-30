@@ -8,6 +8,8 @@
 		'ngMaterial',
 		'angularSlideables',
 		'ngFitText',
-		'ngFileUpload'
+		'ngFileUpload',
+		'ngPopover',
+		'angular-click-outside'
 	])
 })();

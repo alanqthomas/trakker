@@ -18,7 +18,7 @@
 
 		<div id="more-options" class="slideable" easing="cubic-bezier(0.19, 1, 0.22, 1)" duration="1s">
 			<div layout-xs="column" layout-align-xs="start center" layout-gt-xs="row" layout-align-gt-xs="center start">
-					<md-input-container class="type-input" flex-gt-xs="20" flex-xs="40">
+					<md-input-container flex-gt-xs="20" flex-xs="40">
 						<md-select ng-model="newItem.type" placeholder="Type">
 							<md-option ng-click="typeChanged($index)" ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
 						</md-select>
@@ -47,6 +47,58 @@
 			</div>
 		</div>
 	</form>
+
+	<div class="edit-panel" ng-show="showEditPanel" click-outside="showEditPanel = false">
+		<form name="updateItemForm" ng-submit="updateItemSubmit()">
+			<div layout="row" layout-align="end center">
+				<md-button class="md-icon-button" ng-click="showEditPanel = false">
+					<md-icon><i class="material-icons">close</i></md-icon>
+				</md-button>
+			</div>
+			<h2 class="text-center edit-panel-heading">Edit Item</h2>
+			<div layout="row" layout-align="center start">
+				<md-input-container class="update-name-input">
+					<label>Name</label>
+					<input type="text" ng-model="updatedItem.name" md-no-asterisk required />
+				</md-input-container>
+
+				<md-input-container>
+					<label>Type</label>
+					<md-select ng-model="updatedItem.type" placeholder="Type">
+						<md-option ng-click="updateTypeChanged($index)" ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container>
+					<md-select ng-model="updatedItem.statuses" placeholder="Status">
+						<md-option ng-repeat="status in updateStatuses" ng-value="status.value">{{status.name}}</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center start">
+				<md-input-container>
+					<input type="text" ng-model="updatedItem.progress.season" placeholder="Season" />
+				</md-input-container>
+
+				<md-input-container>
+					<input type="text" ng-model="updatedItem.progress.episode" placeholder="Episode" />
+				</md-input-container>
+
+				<md-input-container>
+					<label>IMDB ID</label>
+					<input type="text" ng-model="updatedItem.imdb" />
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center start">
+				<md-input-container>
+					<input type="text" ng-model="updatedItem.imageURL" placeholder="Image URL" />
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center center">
+				<md-button class="md-raised md-primary" type="submit">Save</button>
+			</div>
+		</form>
+	</div>
 
 	{{newItem}}
 

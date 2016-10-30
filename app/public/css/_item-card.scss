@@ -1,15 +1,19 @@
 $card-height: 150px;
+$img-width: 100px;
 
 .item-card-scope {
 	md-card {
 		overflow: hidden;
 	}
 
+	.highlighted {
+		font-weight: bold;
+	}
+
 	.tooltip {
     position: relative;
     display: inline-block;
 		transition: all linear 0.15s;
-
 	}
 
 	.tooltip .tooltip-text {
@@ -54,8 +58,10 @@ $card-height: 150px;
 
 	img{
 		height: $card-height;
-		width: auto;
+		width: $img-width;
 		object-fit: cover;
+		border: 0px;
+		outline: 0px;
 	}
 
 	.img-wrapper{

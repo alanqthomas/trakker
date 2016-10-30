@@ -2,4 +2,59 @@
 	item-card{
 		min-width: 325px;
 	}
+
+	.heading-popover, .normal-text-popover {
+	  color: #999;
+	  padding: 20px;
+	  min-width: 200px;
+	  max-width: 300px;
+	}
+
+	#more-options{
+		background-color: white;
+		box-shadow: inset 0px 2px 5px #888;
+	}
+
+	.edit-panel {
+		background-color: white;
+		box-shadow: 3px 3px 4px #888;
+
+		position: fixed;
+		width: 400px;
+		height: 400px;
+		top: 50%;
+		left: 50%;
+
+		margin-top: -200px;
+		margin-left: -200px;
+
+		border: 1px solid #eee;
+
+		z-index: 999;
+
+		padding: 25px 50px 25px 50px;
+
+		.edit-panel-heading{
+			margin-top: 0px;
+			margin-bottom: 35px;
+		}
+	}
+
+	.edit-panel.ng-hide-remove{
+		animation:  fly-in-top 1s cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	.edit-panel.ng-hide-add{
+		animation: fly-out-top 2s cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	@keyframes fly-in-top {
+		0% {transform: translateY(-1000px);}
+		100% {transform: translateY(0px);}
+	}
+
+	@keyframes fly-out-top{
+		0% {transform: translateY(0);}
+		100% {transform: translateY(-1000px);}
+	}
 }

@@ -1,9 +1,11 @@
 <md-card class="item-card-scope">
 	<div layout="row">
 		<div class="img-wrapper" flex="30">
-			<a ng-show="item.imdb != null" href="{{item.imdb.imdburl}}">
+			<a ng-if="item.imdb != null && item.imageURL == null" href="{{item.imdb.imdburl}}">
 				<img ng-src="{{item.imdb.poster}}">
 			</a>
+			<img ng-if="item.imageURL" ng-src="{{item.imageURL}}" />
+
 		</div>
 
 		<div flex="65" layout="column" class="content-column">
@@ -15,19 +17,27 @@
 						<span class="md-caption">Episode</span>
 						<span>{{item.progress.episode}}</span>
 					</div>
-					{{item.status}}
 				</md-card-title-text>
 
 				<md-card-actions flex="20">
 					<div class="action-row">
-			      <md-button class="md-icon-button" ng-click="deleteItem(item._id)">
-			        <md-icon><i class="material-icons">delete</i></md-icon>
-			      </md-button>
-						<md-button class="md-icon-button" ng-click="showIMDBPrompt($event, item)">
-			        <md-icon><i class="material-icons">link</i></md-icon>
+						<md-button class="md-icon-button" ng-click="editItem(item)">
+			        <md-icon><i class="material-icons">edit</i></md-icon>
+							<md-tooltip md-direction="bottom">
+								Edit
+							</md-tooltip>
 			      </md-button>
 						<md-button ng-show="item.progress" class="md-icon-button" ng-click="incrementEpisodeCount(item)">
 			        <md-icon><i class="material-icons">add_circle</i></md-icon>
+							<md-tooltip md-direction="bottom">
+								+ Episode
+							</md-tooltip>
+			      </md-button>
+						<md-button class="md-icon-button" ng-click="deleteItem(item._id)">
+							<md-icon><i class="material-icons">delete</i></md-icon>
+							<md-tooltip md-direction="bottom">
+								Delete
+							</md-tooltip>
 			      </md-button>
 					</div>
 				</md-card-actions>
@@ -36,12 +46,15 @@
 		<div flex="5" class="tooltip" ng-style="setStatusColor(item)" >
 			<div class="tooltip-text">
 				<div ng-repeat="(type, statuses) in ITEM_STATUSES">
-					<div ng-if="type === item.type" ng-repeat="status in statuses" ng-click="changeStatus(item, status.value)" class="tooltip-menu-item" >
-						{{status.name}}
+					<div ng-if="type === item.type"
+					ng-repeat="status in statuses"
+					ng-click="changeStatus(item, status.value)"
+					class="tooltip-menu-item"
+					ng-class="{highlighted: status.value === item.status}" >
+						<span>{{status.name}}</span>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 </md-card>

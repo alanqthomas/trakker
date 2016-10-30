@@ -66,28 +66,24 @@
 			})
 		}
 
+		$scope.updateItemSubmit = function(){
+			$log.debug("updated item", $scope.updatedItem)
+			$scope.updateItem($scope.updatedItem)
+			$scope.showEditPanel = false
+		}
+
+		$scope.editItem = function(item){
+			$scope.updatedItem = item
+			$scope.updatedItem.imdb = item.imdb.imdbid ? item.imdb.imdbid : item.imdb
+			$scope.showEditPanel = true;
+		}
+
 		$scope.typeChanged = function(index){
 			$scope.statuses = ITEM_TYPES[index].statuses
 		}
 
-		$scope.showIMDBPrompt = function(ev, item){
-			var dialog = $mdDialog.prompt()
-				.clickOutsideToClose(true)
-				.title('IMDB ID')
-				.textContent('Enter an IMDB ID e.g. tt0111161')
-				.ariaLabel('IMDB ID')
-				.initialValue(item.imdb.imdbid ? item.imdb.imdbid : item.imdb)
-				.targetEvent(ev)
-				.ok('Update')
-				.cancel('Cancel')
-
-			$mdDialog.show(dialog).then(function(result){
-				$log.debug('Prompt result: ', result)
-				item.imdb = result
-				$scope.updateItem(item)
-			}, function(){
-				$log.debug('Cancelled')
-			})
+		$scope.updateTypeChanged = function(index){
+			$scope.updateStatuses = ITEM_TYPES[index].statuses
 		}
 
 		$scope.incrementEpisodeCount = function(item){
@@ -96,9 +92,18 @@
 		}
 
 		$scope.changeStatus = function(item, status){
-			console.log(item, status);
-			item.status = status;
-			$scope.updateItem(item);
+			console.log(item, status)
+			item.status = status
+			$scope.updateItem(item)
+		}
+
+		$scope.checkShowImage = function(item){
+			$log.debug("checkShowImage", item.title, item.imdb != null || item.imageURL != null)
+			if(item.imdb != null || item.imageURL != null){
+				return true
+			} else {
+				return false
+			}
 		}
 
 		$scope.setStatusColor = function(item){
@@ -122,10 +127,6 @@
 			}
 
 			return { "background-color":  colorStyle}
-		}
-
-		$scope.openMenu = function($mdOpenMenu, ev){
-			$mdOpenMenu(ev);
 		}
 
 		init()
