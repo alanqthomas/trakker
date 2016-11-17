@@ -13,11 +13,47 @@ a, a *{
 }
 
 .text-center {
-		text-align: center;
+	text-align: center;
+}
+
+.block-center {
+	margin: auto;
 }
 
 .overflow-ellipsis{
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.page-dim {
+	background-color: #000;
+	opacity: 1;
+	width: 100%;
+	height: 1000px !important;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.page-dim.ng-hide-remove{
+	animation: opacity-in-50 0.5s linear;
+}
+
+.page-dim.ng-hide-add{
+	animation: opacity-out-50 0.5s linear;
+}
+
+@keyframes opacity-in-50 {
+	0% {opacity: 0;}
+	100% {opacity: 0.5;}
+}
+
+@keyframes opacity-out-50 {
+	0% {opacity: 0.5;}
+	100% {opacity: 0;}
+}
+
+.white-text {
+	color: white;
 }
