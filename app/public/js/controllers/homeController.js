@@ -5,12 +5,23 @@
 	function($scope, $http, Item, $location, $log, ITEM_TYPES, STATUS_COLORS, ITEM_STATUSES, Imdb, $mdDialog){
 
 		function init(){
+
 			loadItems()
 			$scope.addItemForm = {}
 			// Constants for drop downs
 			$scope.ITEM_TYPES = ITEM_TYPES
 			$scope.ITEM_STATUSES = ITEM_STATUSES
 			$scope.statuses = []
+
+			$scope.cardOrder = "name"
+			$scope.cardOrderReverse = false
+
+			$scope.typeFilters = []
+			$scope.ITEM_TYPES.forEach(function(element){
+				$scope.typeFilters.push(element.value);
+			})
+
+
 		}
 
 		function loadItems(){
@@ -98,12 +109,16 @@
 		}
 
 		$scope.checkShowImage = function(item){
-			$log.debug("checkShowImage", item.title, item.imdb != null || item.imageURL != null)
-			if(item.imdb != null || item.imageURL != null){
+			$log.debug("checkShowImage", item.title, item.imdb !== null || item.imageURL !== null)
+			if(item.imdb !== null || item.imageURL !== null){
 				return true
 			} else {
 				return false
 			}
+		}
+
+		$scope.cardTypeFilter = function(item){
+			return $scope.typeFilters.indexOf(item.type) > -1
 		}
 
 		$scope.setStatusColor = function(item){

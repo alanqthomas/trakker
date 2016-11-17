@@ -100,10 +100,14 @@
 		</form>
 	</div>
 
-	{{newItem}}
+	<div class="mid-bar" layout="column" layout-align="center center">
+		<md-button class="md-icon-button" ng-click="cardOrderReverse = !cardOrderReverse">
+			<md-icon><i class="material-icons">sort_by_alpha</i></md-icon>
+		</md-button>
+	</div>
 
 	<div layout="row" layout-wrap>
-		<item-card flex-xs="100" flex-sm="50" flex="33" ng-repeat="item in items" id="{{item._id}}">
+		<item-card flex-xs="100" flex-sm="50" flex="33" ng-repeat="item in items | orderBy:cardOrder:cardOrderReverse | filter:cardTypeFilter" id="{{item._id}}">
 		</item-card>
 	</div>
 </div>
