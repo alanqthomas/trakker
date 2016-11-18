@@ -100,9 +100,24 @@
 		</form>
 	</div>
 
-	<div class="mid-bar" layout="column" layout-align="center center">
+	<div class="mid-bar" layout="row" layout-align="center center">
 		<md-button class="md-icon-button" ng-click="cardOrderReverse = !cardOrderReverse">
 			<md-icon><i class="material-icons">sort_by_alpha</i></md-icon>
+		</md-button>
+
+		<md-button class="md-hue-1"
+		ng-class="{'md-primary': checkTypeFilter(type)}"
+		ng-click="updateTypeFilters(type)"
+		ng-repeat="type in ITEM_TYPES">
+			{{type.name}}
+		</md-button>
+
+		<md-button ng-disabled="typeFilters.length == ITEM_TYPES.length" class="md-icon-button" ng-click="addAllTypeFilters()">
+			<md-icon><i class="material-icons">playlist_add</i></md-icon>
+		</md-button>
+
+		<md-button ng-disabled="typeFilters.length <= 0" class="md-icon-button" ng-click="clearTypeFilters()">
+			<md-icon><i class="material-icons">clear</i></md-icon>
 		</md-button>
 	</div>
 
