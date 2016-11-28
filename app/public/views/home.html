@@ -100,9 +100,12 @@
 		</form>
 	</div>
 
-	<div class="mid-bar" layout="row" layout-align="center center">
-		<md-button class="md-icon-button" ng-click="cardOrderReverse = !cardOrderReverse">
+	<div class="mid-bar" layout-gt-xs="row" layout="column" layout-align="center center">
+		<md-button class="md-icon-button" ng-click="changeCardOrder('name')">
 			<md-icon><i class="material-icons">sort_by_alpha</i></md-icon>
+		</md-button>
+		<md-button class="md-icon-button" ng-click="changeCardOrder('updatedDate')">
+			<md-icon><i class="material-icons">format_list_numbered</i></md-icon>
 		</md-button>
 
 		<md-button class="md-hue-1"

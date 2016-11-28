@@ -22,6 +22,15 @@
 			})
 		}
 
+		$scope.changeCardOrder = function(field){
+			if($scope.cardOrder === field){
+				$scope.cardOrderReverse = !$scope.cardOrderReverse
+			} else {
+				$scope.cardOrderReverse = false
+				$scope.cardOrder = field
+			}
+		}
+
 		function loadItems(){
 			$scope.items = Item.query(function(res){
 				$log.info("Loaded items", res)
@@ -44,6 +53,7 @@
 		}
 
 		$scope.addItem = function(){
+			$scope.newItem.updatedDate = new Date()
 			Item.save( $scope.newItem,
 			function(res){
 				$log.info("Added item", res)
@@ -67,6 +77,7 @@
 
 		$scope.updateItem = function(item){
 			$log.debug(item)
+			item.updatedDate = new Date()
 			Item.update({id: item._id}, item, function(res){
 				$log.debug(res)
 				loadImdb(item)
