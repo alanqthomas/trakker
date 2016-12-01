@@ -20,6 +20,8 @@
 			$scope.ITEM_TYPES.forEach(function(element){
 				$scope.typeFilters.push(element.value)
 			})
+
+			$scope.statusFilters = []
 		}
 
 		$scope.changeCardOrder = function(field){
@@ -127,7 +129,14 @@
 		}
 
 		$scope.cardTypeFilter = function(item){
-			return $scope.typeFilters.indexOf(item.type) > -1
+			var type = $scope.typeFilters.indexOf(item.type) > -1
+			var status = true;
+
+			if($scope.statusFilters.length > 0){
+				status = $scope.statusFilters.indexOf(item.status) > -1
+			}
+
+			return type && status
 		}
 
 		$scope.checkTypeFilter = function(type){
@@ -141,8 +150,16 @@
 			} else {
 				$scope.typeFilters.push(type.value)
 			}
-		}
 
+			if($scope.typeFilters.length == 1){
+				ITEM_STATUSES[$scope.typeFilters[0]].forEach(function(element){
+					$scope.statusFilters.push(element.value)
+				})
+			} else {
+				$scope.statusFilters = []
+			}
+		}
+		
 		$scope.clearTypeFilters = function(){
 			$scope.typeFilters = []
 		}
@@ -152,6 +169,19 @@
 			$scope.ITEM_TYPES.forEach(function(element){
 				$scope.typeFilters.push(element.value)
 			})
+		}
+
+		$scope.updateStatusFilters = function(status){
+			if($scope.checkStatusFilter(status)){
+				var i = $scope.statusFilters.indexOf(status.value)
+				$scope.statusFilters.splice(i, 1)
+			} else {
+				$scope.statusFilters.push(status.value)
+			}
+		}
+
+		$scope.checkStatusFilter = function(status){
+			return $scope.statusFilters.indexOf(status.value) > -1
 		}
 
 		$scope.setStatusColor = function(item){

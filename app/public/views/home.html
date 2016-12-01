@@ -124,8 +124,22 @@
 		</md-button>
 	</div>
 
+	<div ng-show="typeFilters.length == 1" class="" layout-gt-xs="row" layout="column" layout-align="center center">
+		<div ng-repeat="(type, statuses) in ITEM_STATUSES">
+			<md-button ng-if="type === typeFilters[0]"
+			class="md-hue-1"
+			ng-repeat="status in statuses"
+			ng-class="{'md-primary': checkStatusFilter(status)}"
+			ng-click="updateStatusFilters(status)">
+			{{status.name}}
+			</md-button>
+		</div>
+	</div>
+
 	<div layout="row" layout-wrap>
-		<item-card flex-xs="100" flex-sm="50" flex="33" ng-repeat="item in items | orderBy:cardOrder:cardOrderReverse | filter:cardTypeFilter" id="{{item._id}}">
+		<item-card flex-xs="100" flex-sm="50" flex="33"
+		ng-repeat="item in items | orderBy:cardOrder:cardOrderReverse | filter:cardTypeFilter"
+		id="{{item._id}}">
 		</item-card>
 	</div>
 </div>
