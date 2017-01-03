@@ -46,7 +46,7 @@
 			<div ng-repeat="(type, statuses) in ITEM_STATUSES">
 				<div ng-if="type === item.type"
 				ng-repeat="status in statuses"
-				ng-click="changeStatus(item, status.value)"
+				ng-click="changeStatus(item, status.value); toggleStatusControls(item)"
 				class="tooltip-menu-item"
 				ng-class="{highlighted: status.value === item.status}" >
 					<div class="status-btn md-raised md-default">{{status.name}}</div>

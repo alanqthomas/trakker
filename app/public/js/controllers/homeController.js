@@ -118,7 +118,7 @@
 		}
 
 		$scope.changeStatus = function(item, status){
-			console.log(item, status)
+			$log.debug(item, status)
 			item.status = status
 			$scope.updateItem(item)
 		}
