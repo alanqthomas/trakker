@@ -1,4 +1,56 @@
 .home-scope {
+	.nav-bar {
+	  background-color: #3F51B5;
+		border: none;
+		width: 100%;
+		position: fixed;
+		height: 65px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0px 20px;
+		z-index: 9999;
+		box-shadow: 2px 2px 4px #888;
+	}
+
+	.nav-logo {
+		margin: 0px !important;
+		padding: 0px !important;
+		color: white;
+		float: left;
+
+		&:hover {
+			text-decoration: none;
+			color: #ddd;
+		}
+	}
+
+	.icons {
+		color: white;
+		font-size: 20px;
+		cursor: default;
+	}
+
+	.nav-bar-container {
+		width: 100%;
+		border: 1px solid black;
+		margin: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.search-box {
+		flex-grow: 3;
+		outline: none;
+		border: none;
+		border-radius: 3px;
+		background-color: #303F9F;
+		color: white;
+		padding: 5px;
+		margin: 0 auto !important;
+	}
+
 	item-card{
 		min-width: 325px;
 	}

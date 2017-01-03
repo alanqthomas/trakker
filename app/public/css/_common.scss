@@ -57,3 +57,22 @@ a, a *{
 .white-text {
 	color: white;
 }
+
+::-webkit-input-placeholder { /* Chrome */
+	color: #fff;
+}
+:-ms-input-placeholder { /* IE 10+ */
+	color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+	color: white;
+	opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+	color: white;
+	opacity: 1;
+}
+
+.content {
+	padding-top: 85px;
+}

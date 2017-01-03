@@ -10,6 +10,7 @@
 		'ngFitText',
 		'ngFileUpload',
 		'ngPopover',
-		'angular-click-outside'
+		'angular-click-outside',
+		'ui.bootstrap'
 	])
 })();

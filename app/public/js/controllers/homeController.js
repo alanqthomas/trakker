@@ -16,12 +16,16 @@
 			$scope.cardOrder = "name"
 			$scope.cardOrderReverse = false
 
+			$scope.cardToggle = ''
+
 			$scope.typeFilters = []
 			$scope.ITEM_TYPES.forEach(function(element){
 				$scope.typeFilters.push(element.value)
 			})
 
 			$scope.statusFilters = []
+
+			$scope.search = {}
 		}
 
 		$scope.changeCardOrder = function(field){
@@ -128,9 +132,21 @@
 			}
 		}
 
+		$scope.searchFilter = function(item) {
+			if(!$scope.search.text){
+				return true
+			}
+
+			if(item.name.toLowerCase().search($scope.search.text.toLowerCase()) >= 0){
+				return true;
+			}
+
+			return false;
+		}
+
 		$scope.cardTypeFilter = function(item){
 			var type = $scope.typeFilters.indexOf(item.type) > -1
-			var status = true;
+			var status = true
 
 			if($scope.statusFilters.length > 0){
 				status = $scope.statusFilters.indexOf(item.status) > -1
@@ -159,7 +175,7 @@
 				$scope.statusFilters = []
 			}
 		}
-		
+
 		$scope.clearTypeFilters = function(){
 			$scope.typeFilters = []
 		}
@@ -178,6 +194,17 @@
 			} else {
 				$scope.statusFilters.push(status.value)
 			}
+		}
+
+		$scope.checkShowStatusControls = function(item){
+			return true
+		}
+
+		$scope.toggleStatusControls = function(item){
+			if($scope.cardToggle === item.name)
+				$scope.cardToggle = ''
+			else
+				$scope.cardToggle = item.name
 		}
 
 		$scope.checkStatusFilter = function(status){
@@ -203,7 +230,6 @@
 				default:
 					colorStyle = color
 			}
-
 			return { "background-color":  colorStyle}
 		}
 
