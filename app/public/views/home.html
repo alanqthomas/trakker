@@ -110,28 +110,44 @@
 			</form>
 		</div>
 
-		<div class="mid-bar" layout-gt-xs="row" layout="column" layout-align="center center">
-			<md-button class="md-icon-button" ng-click="changeCardOrder('name')">
-				<md-icon><i class="material-icons">sort_by_alpha</i></md-icon>
-			</md-button>
-			<md-button class="md-icon-button" ng-click="changeCardOrder('updatedDate')">
-				<md-icon><i class="material-icons">format_list_numbered</i></md-icon>
-			</md-button>
+		<div class="mid-bar" flex-order="1" flex-order-gt-xs="1" layout-gt-xs="row" layout="column" layout-align="center center">
+			<div layout="row">
+				<md-button class="md-icon-button" ng-click="changeCardOrder('name')">
+					<md-icon><i class="material-icons">sort_by_alpha</i></md-icon>
+				</md-button>
+				<md-button class="md-icon-button" ng-click="changeCardOrder('updatedDate')">
+					<md-icon><i class="material-icons">format_list_numbered</i></md-icon>
+				</md-button>
 
-			<md-button class="md-hue-1"
-			ng-class="{'md-primary': checkTypeFilter(type)}"
-			ng-click="updateTypeFilters(type)"
-			ng-repeat="type in ITEM_TYPES">
-				{{type.name}}
-			</md-button>
+				<div hide-gt-xs>
+					<md-button ng-disabled="typeFilters.length == ITEM_TYPES.length" class="md-icon-button" ng-click="addAllTypeFilters()">
+						<md-icon><i class="material-icons">playlist_add</i></md-icon>
+					</md-button>
 
-			<md-button ng-disabled="typeFilters.length == ITEM_TYPES.length" class="md-icon-button" ng-click="addAllTypeFilters()">
-				<md-icon><i class="material-icons">playlist_add</i></md-icon>
-			</md-button>
+					<md-button ng-disabled="typeFilters.length <= 0" class="md-icon-button" ng-click="clearTypeFilters()">
+						<md-icon><i class="material-icons">clear</i></md-icon>
+					</md-button>
+				</div>
+			</div>
 
-			<md-button ng-disabled="typeFilters.length <= 0" class="md-icon-button" ng-click="clearTypeFilters()">
-				<md-icon><i class="material-icons">clear</i></md-icon>
-			</md-button>
+			<div layout="row">
+				<md-button class="md-hue-1"
+				ng-class="{'md-primary': checkTypeFilter(type)}"
+				ng-click="updateTypeFilters(type)"
+				ng-repeat="type in ITEM_TYPES">
+					{{type.name}}
+				</md-button>
+			</div>
+
+			<div layout="row" hide-xs>
+				<md-button ng-disabled="typeFilters.length == ITEM_TYPES.length" class="md-icon-button" ng-click="addAllTypeFilters()">
+					<md-icon><i class="material-icons">playlist_add</i></md-icon>
+				</md-button>
+
+				<md-button ng-disabled="typeFilters.length <= 0" class="md-icon-button" ng-click="clearTypeFilters()">
+					<md-icon><i class="material-icons">clear</i></md-icon>
+				</md-button>
+			</div>
 		</div>
 
 		<div ng-show="typeFilters.length == 1" class="" layout-gt-xs="row" layout="column" layout-align="center center">

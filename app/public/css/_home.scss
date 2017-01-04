@@ -9,8 +9,9 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 0px 20px;
-		z-index: 9999;
+		z-index: 999;
 		box-shadow: 2px 2px 4px #888;
+		flex-wrap: wrap;
 	}
 
 	.nav-logo {
@@ -25,10 +26,29 @@
 		}
 	}
 
+	@media #{$mq-xs} {
+		.nav-bar {
+			height: 150px;
+			align-items: center;
+			justify-content: space-around;;
+			flex-direction: column;
+		}
+
+		.nav-logo {
+			float: none;
+			text-align: center;
+		}
+
+		.icons {
+			order: 2;
+		}
+	}
+
 	.icons {
 		color: white;
 		font-size: 20px;
 		cursor: default;
+		order: 3;
 	}
 
 	.nav-bar-container {

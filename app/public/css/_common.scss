@@ -1,3 +1,9 @@
+/* Media Queries */
+$mq-lg: "only screen and (min-width: 1200px)";
+$mq-md: "only screen and (min-width: 768px) and (max-width: 1199px)";
+$md-sm: "only screen and (max-width: 767px)";
+$mq-xs: "only screen and (max-width: 480px)";
+
 a, a *{
 	cursor: pointer;
 
@@ -75,4 +81,5 @@ a, a *{
 
 .content {
 	padding-top: 85px;
+	overflow-x: hidden;
 }
