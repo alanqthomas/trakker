@@ -80,4 +80,11 @@ $img-width: 100px;
 	.action-row:hover md-icon{
 		display: block !important;
 	}
+
+	@media #{$mq-xs} {
+		.action-row md-icon {
+			display: block !important;
+			color: #e3e3e3
+		}
+	}
 }
