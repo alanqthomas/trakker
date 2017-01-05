@@ -2,9 +2,10 @@ const express = require('express'),
  app = express(),
  bodyParser = require('body-parser'),
  assert = require('assert'),
+ MongoClient = require('mongodb').MongoClient,
+ expressMongoDb = require('express-mongo-db'),
  favicon = require('serve-favicon'),
- compression = require('compression'),
- mongoose = require('mongoose')
+ compression = require('compression')
 
 const port = process.env.PORT || 3000,
 	routesPath = './app/routes/',
@@ -13,9 +14,6 @@ const port = process.env.PORT || 3000,
 // Routes
 const item = require(`${routesPath}v${apiVersion}/item`),
 	imdb = require(`${routesPath}v${apiVersion}/imdb`)
-
-// mongoose.connect('mongodb://localhost:27017/trakker')
-mongoose.connect('mongodb://heroku_4zl85rkd:698dt04esv2i1f1o3n50ao677u@ds035816.mlab.com:35816/heroku_4zl85rkd')
 
 // Favicon
 app.use(favicon(__dirname + '/app/public/favicon.ico'))
@@ -29,6 +27,9 @@ app.use(compression())
 
 // Static files
 app.use(express.static(__dirname + '/app/public'))
+
+// MongoDB connection sharing
+app.use(expressMongoDb('mongodb://heroku_4zl85rkd:698dt04esv2i1f1o3n50ao677u@ds035816.mlab.com:35816/heroku_4zl85rkd'))
 
 // Mount routes
 app.use('/api/v' + apiVersion, item)

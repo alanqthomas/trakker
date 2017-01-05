@@ -1,35 +1,48 @@
 const express = require('express'),
 			router = express.Router(),
-			ObjectId = require('mongodb').ObjectId,
-			assert = require('assert')
+			assert = require('assert'),
+			Item = require('../../models/item.js');
 
 const route = '/item'
 
 router.get(`${route}`, (req, res) => {
-	req.db.collection('items').find({}).toArray((err, docs) => {
-		res.send(docs)
+	Item.find({}, (err, docs) => {
+		if (err)
+			res.send(err)
+		res.json(docs)
 	})
 })
 
 router.get(`${route}/:id`, (req, res) => {
-	req.db.collection('items').find({"_id": new ObjectId(req.params.id)}).toArray((err, docs) => {
-		res.send(docs)
+	Item.findById(req.params.id, (err, docs) => {
+		if (err)
+			res.send(err)
+		res.json(docs)
 	})
 })
 
 router.post(`${route}`, (req, res) => {
-	req.db.collection('items').insert(req.body, (err, result) => {
-		assert.equal(err, null)
-		console.log("Inserted a document")
-		res.send(req.body)
+	const body = req.body;
+	const newItem = new Item({
+		name: body.name,
+		type: body.type,
+		status: body.status,
+		updatedDate: body.updatedDate,
+		progress: body.progress,
+		imdb: body.imdb
+	}).save((err, result) => {
+		if (err)
+			res.send(err)
+		console.log('Inserted a document')
+		res.sendStatus(201)
 	})
 })
 
 router.delete(`${route}/:id`, (req, res) => {
-	req.db.collection('items').remove({"_id": new ObjectId(req.params.id)}, (err, result) =>{
-		assert.equal(err, null)
-		console.log("Deleted document:")
-		console.log(result)
+	Item.remove({_id: req.params.id}, (err, docs) => {
+		if (err)
+			res.send(err)
+		console.log('Deleted document', docs)
 		res.sendStatus(200)
 	})
 })
@@ -37,10 +50,25 @@ router.delete(`${route}/:id`, (req, res) => {
 router.put(`${route}/:id`, (req, res) => {
 	delete req.body._id
 	console.log(`Updating object with id ${req.params.id} to the object:`, req.body)
-	req.db.collection('items').replaceOne({"_id": new ObjectId(req.params.id)}, req.body, (err, result) => {
-		assert.equal(err, null)
-		console.log('Update successful', result)
-		res.sendStatus(200)
+	const body = req.body
+
+	Item.findById(req.params.id, (err, newItem) => {
+		if (err)
+			res.send(err)
+
+		newItem.name = body.name
+		newItem.type = body.type
+		newItem.status = body.status
+		newItem.updatedDate = body.updatedDate
+		newItem.progress = body.progress
+		newItem.imdb = body.imdb
+
+		newItem.save((err) => {
+			if (err)
+				res.send(err)
+			console.log('Update successful')
+			res.json(body)
+		})
 	})
 })
 

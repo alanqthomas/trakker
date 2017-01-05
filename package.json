@@ -24,6 +24,7 @@
     "should": "^11.1.0"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "compression": "^1.6.2",
@@ -39,6 +40,7 @@
     "grunt-sass": "^1.2.1",
     "imdb-api": "^2.0.0",
     "mongodb": "^2.2.8",
+    "mongoose": "^4.7.6",
     "serve-favicon": "^2.3.0"
   }
 }
