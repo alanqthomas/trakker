@@ -17,6 +17,9 @@ const item = require(`${routesPath}v${apiVersion}/item`),
 // mongoose.connect('mongodb://localhost:27017/trakker')
 mongoose.connect('mongodb://heroku_4zl85rkd:698dt04esv2i1f1o3n50ao677u@ds035816.mlab.com:35816/heroku_4zl85rkd')
 
+// Use native ES6 promises as the Mongoose promise library
+mongoose.Promise = global.Promise
+
 // Favicon
 app.use(favicon(__dirname + '/app/public/favicon.ico'))
 
