@@ -83,3 +83,9 @@ a, a *{
 	padding-top: 85px;
 	overflow-x: hidden;
 }
+
+@media #{$mq-xs} {
+	.content {
+		padding-top: 170px;
+	}
+}
