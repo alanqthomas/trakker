@@ -43,9 +43,11 @@
 				$scope.items.forEach(function(e, i, a){
 					loadImdb(e)
 				})
+				console.log('$scope.items', $scope.items)
 			}, function(err) {
 				$log.error("Error loading items", err)
 			})
+
 		}
 
 		function loadImdb(item){
@@ -100,7 +102,9 @@
 
 		$scope.editItem = function(item){
 			$scope.updatedItem = item
-			$scope.updatedItem.imdb = item.imdb.imdbid ? item.imdb.imdbid : item.imdb
+			if(item.imdb){
+				$scope.updatedItem.imdb = item.imdb.imdbid ? item.imdb.imdbid : item.imdb
+			}
 			$scope.showEditPanel = true;
 		}
 
@@ -145,6 +149,9 @@
 		}
 
 		$scope.cardTypeFilter = function(item){
+			if(!item.type)
+				return true
+
 			var type = $scope.typeFilters.indexOf(item.type) > -1
 			var status = true
 
