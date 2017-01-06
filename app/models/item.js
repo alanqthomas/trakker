@@ -10,6 +10,7 @@ const itemSchema = new Schema({
 		season: Number,
 		episode: Number
 	},
+	imageURL: String,
 	imdb: Schema.Types.Mixed
 });
 

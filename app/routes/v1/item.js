@@ -29,6 +29,7 @@ router.post(`${route}`, (req, res) => {
 		status: body.status,
 		updatedDate: body.updatedDate,
 		progress: body.progress,
+		imageURL: body.imageURL,
 		imdb: body.imdb
 	}).save((err, result) => {
 		if (err)
@@ -60,7 +61,8 @@ router.put(`${route}/:id`, (req, res) => {
 		newItem.type = body.type
 		newItem.status = body.status
 		newItem.updatedDate = body.updatedDate
-		newItem.progress = body.progress
+		newItem.progress = body.progress,
+		newItem.imageURL = body.imageURL,
 		newItem.imdb = body.imdb
 
 		newItem.save((err) => {
