@@ -19,15 +19,6 @@ $img-width: 100px;
 		font-weight: bold;
 	}
 
-	// .tooltip {
-  //   position: relative;
-  //   display: inline-block;
-	// 	transition: all linear 0.15s;
-	// 	height: 100%;
-	// 	width: 100%;
-	// 	z-index: 999999;
-	// }
-
 	.tooltip {
     width: 75px;
     background-color: blue;
@@ -63,6 +54,17 @@ $img-width: 100px;
 
 	.img-wrapper{
 		height: $card-height;
+	}
+
+	.image-placeholder{
+		background-color: #AAA;
+		height: 100%;
+		width: $img-width;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 72px;
+		color: white;
 	}
 
 	.content-column{

@@ -5,6 +5,9 @@
 				<img ng-src="{{item.imdb.poster}}">
 			</a>
 			<img ng-if="item.imageURL" ng-src="{{item.imageURL}}" />
+			<div class="image-placeholder" ng-if="item.imdb == null && item.imageURL == null">
+				{{item.name.substring(0,1)}}
+			</div>
 		</div>
 
 		<div ng-hide="cardToggle === item.name" flex="65" layout="column" class="content-column">
@@ -54,7 +57,7 @@
 			</div>
 		</div>
 
-		<div flex="5" ng-style="setStatusColor(item)" ng-click="toggleStatusControls(item)">
+		<div flex="5" ng-if="item.status" ng-style="setStatusColor(item)" ng-click="toggleStatusControls(item)">
 		</div>
 	</div>
 </md-card>

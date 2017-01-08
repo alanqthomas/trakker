@@ -217,7 +217,7 @@
 		$scope.checkStatusFilter = function(status){
 			return $scope.statusFilters.indexOf(status.value) > -1
 		}
-
+		
 		$scope.setStatusColor = function(item){
 			var color = STATUS_COLORS[item.status];
 
