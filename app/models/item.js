@@ -11,7 +11,8 @@ const itemSchema = new Schema({
 		episode: Number
 	},
 	imageURL: String,
-	imdb: Schema.Types.Mixed
+	imdb: Schema.Types.Mixed,
+	userId: String
 });
 
 const model = mongoose.model('item', itemSchema)

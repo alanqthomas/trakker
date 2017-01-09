@@ -1,27 +1,31 @@
 const express = require('express'),
 			router = express.Router(),
 			assert = require('assert'),
-			Item = require('../../models/item.js');
+			Item = require('../models/item.js'),
+			passport = require('passport')
+const requireAuth = passport.authenticate('jwt', { session: false })
 
 const route = '/item'
 
-router.get(`${route}`, (req, res) => {
-	Item.find({}, (err, docs) => {
+router.get(`${route}`, requireAuth, (req, res) => {
+	console.log('req', req.user)
+	Item.find({'userId': req.user._id}, (err, docs) => {
 		if (err)
 			res.send(err)
 		res.json(docs)
 	})
 })
 
-router.get(`${route}/:id`, (req, res) => {
-	Item.findById(req.params.id, (err, docs) => {
+router.get(`${route}/:id`, requireAuth, (req, res) => {
+	Item.findById({'_id':req.params.id, 'userId': req.user._id}, (err, docs) => {
 		if (err)
 			res.send(err)
 		res.json(docs)
 	})
 })
 
-router.post(`${route}`, (req, res) => {
+router.post(`${route}`, requireAuth, (req, res) => {
+	console.log('req', req.user._id)
 	const body = req.body;
 	const newItem = new Item({
 		name: body.name,
@@ -30,7 +34,8 @@ router.post(`${route}`, (req, res) => {
 		updatedDate: body.updatedDate,
 		progress: body.progress,
 		imageURL: body.imageURL,
-		imdb: body.imdb
+		imdb: body.imdb,
+		userId: req.user._id
 	}).save((err, result) => {
 		if (err)
 			res.send(err)
@@ -39,8 +44,9 @@ router.post(`${route}`, (req, res) => {
 	})
 })
 
-router.delete(`${route}/:id`, (req, res) => {
-	Item.remove({_id: req.params.id}, (err, docs) => {
+router.delete(`${route}/:id`, requireAuth, (req, res) => {
+	console.log('req', req.user)
+	Item.find({'_id': req.params.id, 'userId': req.user._id}).remove( (err, docs) => {
 		if (err)
 			res.send(err)
 		console.log('Deleted document', docs)
@@ -48,7 +54,8 @@ router.delete(`${route}/:id`, (req, res) => {
 	})
 })
 
-router.put(`${route}/:id`, (req, res) => {
+router.put(`${route}/:id`, requireAuth, (req, res) => {
+	console.log('req', req.user)
 	delete req.body._id
 	console.log(`Updating object with id ${req.params.id} to the object:`, req.body)
 	const body = req.body

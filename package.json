@@ -39,8 +39,12 @@
     "grunt-express-server": "^0.5.3",
     "grunt-sass": "^1.2.1",
     "imdb-api": "^2.0.0",
+    "jwt-simple": "^0.5.1",
     "mongodb": "^2.2.8",
     "mongoose": "^4.7.6",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0"
   }
 }
