@@ -1,0 +1,47 @@
+<div class="landing-scope" ng-controller="landingController">
+
+	<div class="page" layout="row">
+		<!-- Splash image -->
+		<div class="image-column" layout="column" flex></div>
+		<!-- End splash image -->
+
+		<!-- Sign in column -->
+		<div class="sign-in-column" layout="column" flex-xs="100" flex="50" flex-gt-sm="30">
+			<div class="image-column xs-image" layout="row" layout-align="center center" hide-gt-xs>
+				<h1>Trakker</h1>
+			</div>
+			<div class="sign-in-column-content">
+				<div layout="row" layout-align="center center" hide-xs>
+					<h1>Trakker</h1>
+				</div>
+				<form ng-submit="signin()">
+					<div layout="row" layout-align="center center">
+						<md-input-container flex="100" class="name-input form-input">
+							<label>Email</label>
+							<input type="email" ng-model="user.email" md-no-asterisk required/>
+						</md-input-container>
+					</div>
+					<div layout="row" layout-align="center center">
+						<md-input-container flex="100" class="name-input form-input">
+							<label>Password</label>
+							<input type="password" ng-model="user.password" md-no-asterisk required/>
+						</md-input-container>
+					</div>
+					<div class="error-row" layout="row" layout-align="start center">
+						<span>{{errorMessage}}</span>
+					</div>
+					<div layout="row" layout-align="center center">
+						<md-button flex="100" class="md-raised md-primary" type="submit">Login</md-button>
+					</div>
+				</form>
+				<div layout="row" layout-align="center center">
+					<md-button flex="100" ng-click="signup()">Sign Up</md-button>
+				</div>
+				<div class="copyright-row" layout="row" layout-align="end end">
+					&copy; Ameba Inc. 2017
+				</div>
+			</div>
+		</div>
+		<!-- End sign in column -->
+	</div>
+</div>

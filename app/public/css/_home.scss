@@ -26,11 +26,20 @@
 		}
 	}
 
-	@media #{$mq-xs} {
+	.email-text {
+		display: inline-block;
+		font-size: 12px;
+		width: 200px;
+		text-align: right;
+		padding-right: 2px;
+		overflow: hidden;
+	}
+
+	@media #{$mq-sm} {
 		.nav-bar {
 			height: 150px;
 			align-items: center;
-			justify-content: space-around;;
+			justify-content: space-around;
 			flex-direction: column;
 		}
 
@@ -41,6 +50,10 @@
 
 		.icons {
 			order: 2;
+		}
+
+		.search-box {
+			width: 300px;
 		}
 	}
 
@@ -61,7 +74,6 @@
 	}
 
 	.search-box {
-		flex-grow: 3;
 		outline: none;
 		border: none;
 		border-radius: 3px;

@@ -1,8 +1,12 @@
 (function(){
 
 	angular.module('trakker').controller('homeController',
-	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'STATUS_COLORS', 'ITEM_STATUSES', 'Imdb', '$mdDialog',
-	function($scope, $http, Item, $location, $log, ITEM_TYPES, STATUS_COLORS, ITEM_STATUSES, Imdb, $mdDialog){
+	['$scope', '$http', 'Item', '$location', '$log', 'ITEM_TYPES', 'API',
+	'STATUS_COLORS', 'ITEM_STATUSES', 'Imdb', '$mdDialog', '$mdToast', '$state',
+	'$localStorage',
+	function($scope, $http, Item, $location, $log, ITEM_TYPES, API,
+					STATUS_COLORS, ITEM_STATUSES, Imdb, $mdDialog, $mdToast, $state,
+					$localStorage){
 
 		function init(){
 
@@ -18,6 +22,8 @@
 
 			$scope.cardToggle = ''
 
+			$scope.email = $localStorage.email ? $localStorage.email : ''
+
 			$scope.typeFilters = []
 			$scope.ITEM_TYPES.forEach(function(element){
 				$scope.typeFilters.push(element.value)
@@ -26,6 +32,23 @@
 			$scope.statusFilters = []
 
 			$scope.search = {}
+		}
+
+		$scope.showToast = function(message) {
+			$mdToast.show(
+				$mdToast.simple()
+					.textContent(message)
+					.position('bottom right')
+					.hideDelay(4000)
+			);
+		}
+
+		$scope.signout = function() {
+			$log.debug('signed out')
+			$localStorage.token = null
+			$localStorage.email = null
+			$state.go('landing')
+			$scope.showToast('Farewell, friend...')
 		}
 
 		$scope.changeCardOrder = function(field){
@@ -67,19 +90,24 @@
 				$log.info("Added item", res)
 				$scope.newItem = {}
 				$scope.addItemForm.$setPristine()
+				$scope.addItemForm.$setUntouched()
+				$scope.showToast('Item added!')
 				loadItems()
 			}, function(err){
 				$log.error("Error adding item", err)
+				$scope.showToast('Oh no! There was a problem trying to add the item.')
 			})
 		}
 
 		$scope.deleteItem = function(id){
 			$log.debug(id)
-			Item.delete({id: id}, function(res){
+			Item.remove({id: id}, function(res){
 				$log.debug(res)
+				$scope.showToast('Bye item :(')
 				loadItems()
 			}, function(res){
 				$log.error(res)
+				$scope.showToast('There was a problem trying to delete this item.')
 			})
 		}
 
@@ -88,8 +116,10 @@
 			item.updatedDate = new Date()
 			Item.update({id: item._id}, item, function(res){
 				$log.debug(res)
+				$scope.showToast('Item updated!')
 				loadImdb(item)
 			}, function(res){
+				$scope.showToast('There was a problem trying to update this item.')
 				$log.error(res)
 			})
 		}
@@ -217,7 +247,7 @@
 		$scope.checkStatusFilter = function(status){
 			return $scope.statusFilters.indexOf(status.value) > -1
 		}
-		
+
 		$scope.setStatusColor = function(item){
 			var color = STATUS_COLORS[item.status];
 

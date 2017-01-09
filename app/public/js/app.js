@@ -11,6 +11,7 @@
 		'ngFileUpload',
 		'ngPopover',
 		'angular-click-outside',
-		'ui.bootstrap'
+		'ui.bootstrap',
+		'ngStorage'
 	])
 })();

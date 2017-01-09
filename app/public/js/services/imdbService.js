@@ -13,7 +13,7 @@
 					return promise
 				},
 				getByTitle: function(title) {
-					var promise = $http(API.VERSION_1 + '/imdb/title/' + title)
+					var promise = $http(API.VERSION_1 + 'imdb/title/' + title)
 					.then(function(res){
 						return res.data
 					},function(res){
