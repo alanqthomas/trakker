@@ -31,6 +31,11 @@
 				$state.go('landing')
 				event.preventDefault()
 			}
+
+			if(toState.url === '/' && $localStorage.token) {
+				$state.go('home')
+				event.preventDefault()
+			}
 		})
 	})
 

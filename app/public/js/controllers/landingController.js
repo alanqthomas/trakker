@@ -5,7 +5,6 @@
 	function($scope, $http, API, $state, $localStorage){
 
 		function init(){
-			$scope.$storage = $localStorage;
 		}
 
 		function storeTokenAndForward(token) {
