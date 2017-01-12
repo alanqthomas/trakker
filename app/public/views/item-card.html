@@ -24,23 +24,23 @@
 				<md-card-actions flex="20">
 					<div class="action-row">
 						<md-button class="md-icon-button" ng-click="editItem(item)">
-			        <md-icon><i class="material-icons">edit</i></md-icon>
+							<md-icon><i class="material-icons">edit</i></md-icon>
 							<md-tooltip md-direction="bottom">
 								Edit
 							</md-tooltip>
-			      </md-button>
+						</md-button>
 						<md-button ng-show="item.progress" class="md-icon-button" ng-click="incrementEpisodeCount(item)">
-			        <md-icon><i class="material-icons">add_circle</i></md-icon>
+							<md-icon><i class="material-icons">add_circle</i></md-icon>
 							<md-tooltip md-direction="bottom">
 								+ Episode
 							</md-tooltip>
-			      </md-button>
-						<md-button class="md-icon-button" ng-click="deleteItem(item._id)">
+						</md-button>
+						<md-button class="md-icon-button" ng-click="deleteItem(item, $event)">
 							<md-icon><i class="material-icons">delete</i></md-icon>
 							<md-tooltip md-direction="bottom">
 								Delete
 							</md-tooltip>
-			      </md-button>
+						</md-button>
 					</div>
 				</md-card-actions>
 		</div>

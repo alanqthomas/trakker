@@ -108,15 +108,28 @@
 			})
 		}
 
-		$scope.deleteItem = function(id){
-			$log.debug(id)
-			Item.remove({id: id}, function(res){
+		$scope.deleteItem = function(item, event){
+			console.log('item', item);
+			var id = item._id
+			$log.debug('delete', item._id)
+
+			var confirm = $mdDialog.confirm()
+				.title('Are you sure you want to delete ' + item.name + '?')
+				.targetEvent(event)
+				.ok('Delete')
+				.cancel('Nevermind!')
+
+			$mdDialog.show(confirm).then(function() {
+				Item.remove({id: id}, function(res){
 				$log.debug(res)
 				$scope.showToast('Bye item :(')
 				loadItems()
 			}, function(res){
 				$log.error(res)
 				$scope.showToast('There was a problem trying to delete this item.')
+			})
+			}, function() {
+				$log.debug('delete cancelled')
 			})
 		}
 
