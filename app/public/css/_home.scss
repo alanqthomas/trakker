@@ -88,10 +88,10 @@
 	}
 
 	.heading-popover, .normal-text-popover {
-	  color: #999;
-	  padding: 20px;
-	  min-width: 200px;
-	  max-width: 300px;
+		color: #999;
+		padding: 20px;
+		min-width: 200px;
+		max-width: 300px;
 	}
 
 	.edit-panel {
@@ -99,21 +99,28 @@
 		box-shadow: 3px 3px 4px #888;
 
 		position: fixed;
-		width: 400px;
-		height: 480px;
+		width: 550px;
+		height: 550px;
 		top: 50%;
 		left: 50%;
 
-		margin-top: -175px;
-		margin-left: -200px;
+		margin-top: -250px;
+		margin-left: -275px;
 
 		border: 1px solid #eee;
-		z-index: 1;
+		z-index: 9999;
 		padding: 25px 50px 25px 50px;
 
 		.edit-panel-heading{
 			margin-top: 0px;
 			margin-bottom: 35px;
+		}
+	}
+
+	@media #{$mq-sm} {
+		.edit-panel {
+			width: 400px;
+			margin-left: -200px;
 		}
 	}
 
@@ -145,5 +152,9 @@
 		color: gray;
 		padding: 50px;
 		text-align: center;
+	}
+
+	.options-container {
+		height: 200px;
 	}
 }

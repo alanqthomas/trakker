@@ -6,7 +6,7 @@
 			</a>
 			<img ng-if="item.imageURL" ng-src="{{item.imageURL}}" />
 			<div class="image-placeholder" ng-if="item.imdb == null && item.imageURL == null">
-				{{item.name.substring(0,1)}}
+				{{item.name.substring(0,1).toUpperCase()}}
 			</div>
 		</div>
 

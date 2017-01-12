@@ -32,6 +32,15 @@
 			$scope.statusFilters = []
 
 			$scope.search = {}
+
+			$scope.newItem = {}
+			$scope.updatedItem = {}
+		}
+
+		var typeToIndex = {
+			'movie': 0,
+			'tv_series': 1,
+			'video_game': 2
 		}
 
 		$scope.showToast = function(message) {
@@ -132,17 +141,23 @@
 
 		$scope.editItem = function(item){
 			$scope.updatedItem = item
+			$scope.updateTypeChanged()
+			console.log('updated item', $scope.updatedItem)
 			if(item.imdb){
 				$scope.updatedItem.imdb = item.imdb.imdbid ? item.imdb.imdbid : item.imdb
 			}
 			$scope.showEditPanel = true;
 		}
 
-		$scope.typeChanged = function(index){
+		$scope.typeChanged = function(){
+			var index = typeToIndex[$scope.newItem.type]
 			$scope.statuses = ITEM_TYPES[index].statuses
 		}
 
-		$scope.updateTypeChanged = function(index){
+		$scope.updateTypeChanged = function(){
+			if(!$scope.updatedItem.type)
+				return
+			var index = typeToIndex[$scope.updatedItem.type]
 			$scope.updateStatuses = ITEM_TYPES[index].statuses
 		}
 

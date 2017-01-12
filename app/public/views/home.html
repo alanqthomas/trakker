@@ -28,35 +28,32 @@
 			</div>
 
 			<div id="more-options" class="slideable" easing="cubic-bezier(0.19, 1, 0.22, 1)" duration="1s">
-				<div layout-xs="column" layout-align-xs="start center" layout-gt-xs="row" layout-align-gt-xs="center start">
-						<md-input-container flex-gt-xs="20" flex-xs="40">
-							<md-select ng-model="newItem.type" placeholder="Type">
-								<md-option ng-click="typeChanged($index)" ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
+				<div class="options-container">
+					<div layout="row" layout-align="center center" layout-wrap>
+						<md-input-container flex-xs="80" flex-sm="40" flex-gt-sm="20">
+							<md-select ng-change="typeChanged()" ng-model="newItem.type" placeholder="Type">
+								<md-option ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
 							</md-select>
 						</md-input-container>
 
-						<md-input-container class="status-input" flex="20">
+						<md-input-container ng-if="newItem.type" class="status-input" flex-xs="80" flex-sm="40" flex-gt-sm="20">
 							<md-select ng-model="newItem.status" placeholder="Status">
 								<md-option ng-repeat="status in statuses" ng-value="status.value">{{status.name}}</md-option>
 							</md-select>
 						</md-input-container>
+					</div>
 
-						<md-input-container flex="10">
-							<input type="text" ng-model="newItem.progress.season" placeholder="Season" />
+					<div ng-show="newItem.type == 'tv_series'" layout="row" layout-align="center center">
+						<md-input-container flex-xs="40" flex-sm="20" flex-gt-sm="10">
+							<input type="number" ng-model="newItem.progress.season" placeholder="Season" />
 						</md-input-container>
 
-						<md-input-container flex="10">
-							<input type="text" ng-model="newItem.progress.episode" placeholder="Episode" />
+						<md-input-container flex-xs="40" flex-sm="20" flex-gt-sm="10">
+							<input type="number" ng-model="newItem.progress.episode" placeholder="Episode" />
 						</md-input-container>
-				</div>
-
-				<div layout="row" layout-align="center start">
-					<md-input-container>
-						<label>IMDB ID</label>
-						<input type="text" ng-model="newItem.imdb" />
-					</md-input-container>
-				</div>
-			</div>
+					</div>
+				</div><!-- End .options-container -->
+			</div><!-- End #more-options -->
 		</form>
 
 		<div class="edit-panel" ng-show="showEditPanel" click-outside="showEditPanel = false">
@@ -66,33 +63,37 @@
 						<md-icon><i class="material-icons">close</i></md-icon>
 					</md-button>
 				</div>
+
 				<h2 class="text-center edit-panel-heading">Edit Item</h2>
-				<div layout="row" layout-align="center start">
-					<md-input-container class="update-name-input">
+
+				<div layout="row" layout-align="center start" layout-wrap>
+					<md-input-container flex="100">
 						<label>Name</label>
 						<input type="text" ng-model="updatedItem.name" md-no-asterisk required />
 					</md-input-container>
 
-					<md-input-container>
+					<md-input-container flex="50">
 						<label>Type</label>
-						<md-select ng-model="updatedItem.type" placeholder="Type">
-							<md-option ng-click="updateTypeChanged($index)" ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
+						<md-select ng-change="updateTypeChanged()" ng-model="updatedItem.type" placeholder="Type">
+							<md-option ng-repeat="type in ITEM_TYPES" ng-value="type.value">{{type.name}}</md-option>
 						</md-select>
 					</md-input-container>
 
-					<md-input-container>
+					<md-input-container ng-if="updatedItem.type" flex="50">
+						<label>Status</label>
 						<md-select ng-model="updatedItem.status" placeholder="Status">
 							<md-option ng-repeat="status in updateStatuses" ng-value="status.value">{{status.name}}</md-option>
 						</md-select>
 					</md-input-container>
 				</div>
-				<div layout="row" layout-align="center start">
+
+				<div layout="row" layout-align="center center">
 					<md-input-container>
-						<input type="text" ng-model="updatedItem.progress.season" placeholder="Season" />
+						<input type="number" ng-disabled="updatedItem.type !== 'tv_series'" ng-model="updatedItem.progress.season" placeholder="Season" />
 					</md-input-container>
 
 					<md-input-container>
-						<input type="text" ng-model="updatedItem.progress.episode" placeholder="Episode" />
+						<input type="number" ng-disabled="updatedItem.type !== 'tv_series'" ng-model="updatedItem.progress.episode" placeholder="Episode" />
 					</md-input-container>
 
 					<md-input-container>
@@ -100,11 +101,13 @@
 						<input type="text" ng-model="updatedItem.imdb" />
 					</md-input-container>
 				</div>
-				<div layout="row" layout-align="center start">
+
+				<div layout="row" layout-align="center center">
 					<md-input-container>
 						<input type="text" ng-model="updatedItem.imageURL" placeholder="Image URL" />
 					</md-input-container>
 				</div>
+
 				<div layout="row" layout-align="center center">
 					<md-button class="md-raised md-primary" type="submit">Save</button>
 				</div>
