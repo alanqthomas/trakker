@@ -253,10 +253,10 @@
 		}
 
 		$scope.toggleStatusControls = function(item){
-			if($scope.cardToggle === item.name)
+			if($scope.cardToggle === item._id)
 				$scope.cardToggle = ''
 			else
-				$scope.cardToggle = item.name
+				$scope.cardToggle = item._id
 		}
 
 		$scope.checkStatusFilter = function(status){

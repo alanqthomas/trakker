@@ -1,6 +1,5 @@
 $card-height: 175px;
 $img-width: 100px;
-
 .item-card-scope {
 	.status-btn {
 		background-color: #ddd;
@@ -10,53 +9,38 @@ $img-width: 100px;
 		margin: 3px !important;
 		text-align: center;
 	}
-
 	md-card {
 		overflow: hidden;
 	}
-
 	.highlighted {
 		font-weight: bold;
 	}
-
 	.tooltip {
-    width: 75px;
-    background-color: blue;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 5px 0;
+		width: 75px;
+		background-color: blue;
+		color: #fff;
+		text-align: center;
+		border-radius: 2px;
+		padding: 5px 0;
 		transition: all linear 0.15s;
 		transition-delay: .25s;
 		font-size: 10px;
 		cursor: pointer;
-
-    /* Position the tooltip */
-    position: absolute;
-		bottom: $card-height + 5;
-		right: 0px;
-    z-index: 1;
-
 	}
-
-
 	.md-button {
 		margin: 0px !important;
 	}
-
-	img{
+	img {
 		height: $card-height;
 		width: $img-width;
 		object-fit: cover;
 		border: 0px;
 		outline: 0px;
 	}
-
-	.img-wrapper{
+	.img-wrapper {
 		height: $card-height;
 	}
-
-	.image-placeholder{
+	.image-placeholder {
 		background-color: #AAA;
 		height: 100%;
 		width: $img-width;
@@ -66,23 +50,18 @@ $img-width: 100px;
 		font-size: 72px;
 		color: white;
 	}
-
-	.content-column{
+	.content-column {
 		padding: 15px;
 	}
-
-	.status-change-column{
+	.status-change-column {
 		padding: 15px;
 	}
-
-	.action-row md-icon{
+	.action-row md-icon {
 		display: none !important;
 	}
-
-	.action-row:hover md-icon{
+	.content-column:hover md-icon {
 		display: block !important;
 	}
-
 	@media #{$mq-xs} {
 		.action-row md-icon {
 			display: block !important;
