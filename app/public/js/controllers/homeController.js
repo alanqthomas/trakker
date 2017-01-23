@@ -25,9 +25,9 @@
 			$scope.email = $localStorage.email ? $localStorage.email : ''
 
 			$scope.typeFilters = []
-			$scope.ITEM_TYPES.forEach(function(element){
-				$scope.typeFilters.push(element.value)
-			})
+			// $scope.ITEM_TYPES.forEach(function(element){
+			// 	$scope.typeFilters.push(element.value)
+			// })
 
 			$scope.statusFilters = []
 
@@ -207,6 +207,8 @@
 		}
 
 		$scope.cardTypeFilter = function(item){
+			if($scope.typeFilters.length === 0) return true
+
 			if(!item.type)
 				return true
 
