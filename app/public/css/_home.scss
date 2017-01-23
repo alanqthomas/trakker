@@ -26,6 +26,20 @@
 		}
 	}
 
+	.more-triangle {
+		display: inline-block;
+		transform: rotate(0deg);
+		transition: all 0.25s ease-out;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	.rotate-180 {
+		transform: rotate(180deg);
+	}
+
 	.email-text {
 		display: inline-block;
 		font-size: 12px;
@@ -33,6 +47,10 @@
 		text-align: right;
 		padding-right: 2px;
 		overflow: hidden;
+	}
+
+	.name-input {
+		margin-bottom: 0px;
 	}
 
 	@media #{$mq-sm} {

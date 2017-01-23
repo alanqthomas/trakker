@@ -35,6 +35,8 @@
 
 			$scope.newItem = {}
 			$scope.updatedItem = {}
+
+			$scope.rotateTriangle = ''
 		}
 
 		var typeToIndex = {
@@ -144,6 +146,14 @@
 				$scope.showToast('There was a problem trying to update this item.')
 				$log.error(res)
 			})
+		}
+
+		$scope.moreOptionsClick = function(){
+			console.log($scope.rotateTriangle)
+			if($scope.rotateTriangle.length > 0)
+				$scope.rotateTriangle = ''
+			else
+				$scope.rotateTriangle = 'rotate-180'
 		}
 
 		$scope.updateItemSubmit = function(){

@@ -24,7 +24,7 @@
 			</div>
 
 			<div layout="row" layout-align="center start">
-				<a class="option-toggle md-caption" slide-toggle="#more-options">more&#9660;</a>
+				<a class="option-toggle md-caption" ng-click="moreOptionsClick()" slide-toggle="#more-options">more<div ng-class="rotateTriangle" class="more-triangle">&#9660;</div></a>
 			</div>
 
 			<div id="more-options" class="slideable" easing="cubic-bezier(0.19, 1, 0.22, 1)" duration="1s">
