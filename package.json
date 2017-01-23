@@ -28,8 +28,10 @@
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-mongo-db": "^2.0.3",
+    "express-session": "^1.14.2",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-concat": "^1.0.1",
@@ -43,6 +45,7 @@
     "mongodb": "^2.2.8",
     "mongoose": "^4.7.6",
     "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0"

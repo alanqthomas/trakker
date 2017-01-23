@@ -8,30 +8,43 @@ const requireSignin = passport.authenticate('local', { session: false })
 
 const tokenForUser = (user) => {
 	const timestamp = new Date().getTime()
-	return jwt.encode({ sub: user.id, iat: timestamp }, config.secret)
+	return jwt.encode({
+		sub: user.id,
+		iat: timestamp
+	}, config.secret)
 }
 
 const signin = (req, res, next) => {
 	// User has already had their email and password auth'd
 	// We just need to give them a token
-	res.send({ token: tokenForUser(req.user) })
+	res.send({
+		token: tokenForUser(req.user)
+	})
 }
 
 const signup = (req, res, next) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
-	if(!email || !password) {
-		return res.status(422).send({ error: 'You must provide an email and password'})
+	if (!email || !password) {
+		return res.status(422).send({
+			error: 'You must provide an email and password'
+		})
 	}
 
 	// See if a user with the given email exists
-	User.findOne({ email: email}, function(err, existingUser) {
-		if (err) { return next(err); }
+	User.findOne({
+		email: email
+	}, function (err, existingUser) {
+		if (err) {
+			return next(err);
+		}
 
 		// If a user with email does exist, return an error
 		if (existingUser) {
-			return res.status(422).send({ error: "Someone's already using that email!"})
+			return res.status(422).send({
+				error: "Someone's already using that email!"
+			})
 		}
 	});
 
@@ -41,31 +54,30 @@ const signup = (req, res, next) => {
 		password: password
 	});
 
-	user.save(function(err) {
-		if (err) { return next(err) }
+	user.save(function (err) {
+		if (err) {
+			return next(err)
+		}
 
 		// Respond to request indicating the user was created
-		res.json({ token: tokenForUser(user) })
+		res.json({
+			token: tokenForUser(user)
+		})
 	});
 }
 
+// Local & JWT Authentication
 router.post('/signin', requireSignin, signin)
 router.post('/signup', signup)
 
-// Middleware error handler for json response
-function handleError(err,req,res,next){
-	console.log('err', err)
-    var output = {
-        error: {
-            name: err.name,
-            message: err.message,
-            text: err.toString()
-        }
-    };
-    var statusCode = err.status || 500;
-    res.status(statusCode).json(output);
-}
-
-router.use([handleError])
+// Google Authentication
+router.get('/google',
+	passport.authenticate('google', { scope: ['openid email profile']}));
+router.get('/google/callback',
+	passport.authenticate('google', {
+		successRedirect: '/',
+		failureRedirect: '/landing'
+	})
+);
 
 module.exports = router

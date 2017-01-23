@@ -1,10 +1,14 @@
 const express = require('express'),
  app = express(),
  bodyParser = require('body-parser'),
+ cookieParser = require('cookie-parser'),
+ session = require('express-session'),
  assert = require('assert'),
  favicon = require('serve-favicon'),
  compression = require('compression'),
- mongoose = require('mongoose')
+ passport = require('passport'),
+ mongoose = require('mongoose'),
+ config = require('./app/config')
 
 const port = process.env.PORT || 3000,
 	routesPath = './app/routes/',
@@ -24,20 +28,25 @@ mongoose.Promise = global.Promise
 // Favicon
 app.use(favicon(__dirname + '/app/public/favicon.ico'))
 
+
+// Static files
+app.use(express.static(__dirname + '/app/public'))
 // Body parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
+app.use(session({ secret: config.secret, resave: false, saveUninitialized: true}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Compression
 app.use(compression())
-
-// Static files
-app.use(express.static(__dirname + '/app/public'))
 
 // Mount routes
 app.use('/api/v' + apiVersion, item)
 app.use('/api/v' + apiVersion, imdb)
-app.use('/api/v' + apiVersion, authentication)
+app.use('/auth', authentication)
 
 const server = app.listen(port, () =>{
 	console.log('Listening on port ' + port + '...')
